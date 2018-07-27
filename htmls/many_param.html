@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="{%static 'js/jquery.js'%}"></script>
+
+</head>
+<body>
+<button onclick="commit()"> 提交</button>
+</body>
+<script>
+    function commit() {
+        var array = [{'key':1}, {'hh': 'o', 'll': '00'}];
+        {#JSON.stringify(array); 将array 转成字符串#}
+{#        JSON.parse(json字符串) 将json字符串转成对应的变量#}
+
+        $.ajax({
+            url:'/axf/many_param',
+            data:{
+                my_data: JSON.stringify(array)
+            },
+            method:"post",
+            success:function (res) {
+                console.log(res);
+            }
+        })
+    }
+</script>
+</html>
